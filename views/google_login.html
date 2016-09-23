@@ -14,6 +14,7 @@
 <div>
 
 <button type="submit" onclick="find()">Check logged in users!!</button>
+<input id="push">-</input>
 </div>
 <script>
 
@@ -58,6 +59,8 @@ function find(){
 	req.open("Get","http://localhost:3000/users",true);
 	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	req.send();
+	var p=document.getElementById("push");
+	p.value="Check console of your server to see the result!!";
 
 }
 </script>
