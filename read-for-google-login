@@ -1,0 +1,10 @@
+
+Google login using firebase is done in index.js
+
+Ajax script for sending the token id to node server is done in google_login.html
+
+firebase json has no use as of now!!(wasa used to setup firebase tools for firebase local server)
+
+
+check console for key being received at node server
+
