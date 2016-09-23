@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="google-signin-client_id" content="500961740001-bhv4c4khmojm4df1kug6vsm3d61lsiin.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<title></title>
+</head>
+<body>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+<div>
+
+<button type="submit" onclick="find()">Check logged in users!!</button>
+</div>
+<script>
+
+function onSignIn(googleUser) {
+	var id_token = googleUser.getAuthResponse().id_token;
+
+		var xhttp=new XMLHttpRequest();
+	
+	xhttp.open("Post","http://localhost:3000/google_sign",true);
+	xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xhttp.send(id_token);
+	console.log("success");
+
+
+	/*$.ajax({
+        type: 'POST',
+        data: JSON.stringify(id_token),
+      
+        contentType: "application/json",
+        //contentType: "application/x-www-form-urlencoded",
+        dataType:'json',
+        url: 'http://localhost:3000/google-log',                      
+        success: function(data) {
+            console.log('success');
+            console.log(JSON.stringify(id_token));                               
+        },
+        error: function(error) {
+            console.log("some error in fetching the msg");
+         }
+
+    });*/
+
+  /*var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail());*/
+}
+function find(){
+
+	var req=new XMLHttpRequest();
+	req.open("Get","http://localhost:3000/users",true);
+	req.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	req.send();
+
+}
+</script>
+</body>
+</html>
