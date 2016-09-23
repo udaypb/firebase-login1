@@ -35,7 +35,7 @@ app.post('/google_sign',function(req,res){
 		console.log(token);
 		//--------------------------------creating credential for firebase login using the token_id
 	 var credential = firebase.auth.GoogleAuthProvider.credential(token);
-	 console.log(credential);
+	 console.log("-----------------------------------------------------------------------------------------");
 // Sign in with credential from the Google user.
 firebase.auth().signInWithCredential(credential).catch(function(error) {
   // Handle Errors here.
@@ -48,7 +48,11 @@ firebase.auth().signInWithCredential(credential).catch(function(error) {
   console.log("-------------------------credential error at firebase-------------------"+error);
   res.json({msg:error});
 }).then(function(){
-   res.json({msg:"user logged in with google email id!!"});
+   res.json({msg:"success"});
+
+
+
+   console.log("user successfully logged in using google account!");
 
 });
 });
@@ -59,10 +63,13 @@ app.get('/users',function(req,res){
 
     if(user){
       res.json({users_logged_in: user});
+      console.log("----------------------------------------------------------");
+      console.log(user);
+
     }else{
 
       res.json({msg:"no user signed in!!"});
-      
+      console.log("=====================================no user logged in!===================================");
     }
   });
 
@@ -71,4 +78,5 @@ app.get('/users',function(req,res){
 
 app.listen(3000);
 console.log('connect success!!00');
+
 
